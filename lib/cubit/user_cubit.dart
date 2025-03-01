@@ -1,3 +1,4 @@
+import 'package:apis_rev/cache/cache_helper.dart';
 import 'package:apis_rev/core/api/api_consumer.dart';
 import 'package:apis_rev/core/api/end_points.dart';
 import 'package:apis_rev/core/errors/exceptions.dart';
@@ -45,6 +46,8 @@ class UserCubit extends Cubit<UserState> {
       );
       user=SigninModel.fromJson(response);
       final decodedToken = JwtDecoder.decode(user!.token);
+      CacheHelper().saveData(key: ApiKey.token, value: user!.token);
+      CacheHelper().saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
       print(decodedToken['id']);
       emit(SignInSuccess());
     } on ServerException catch(e){

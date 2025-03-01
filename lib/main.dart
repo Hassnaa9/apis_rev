@@ -1,3 +1,4 @@
+import 'package:apis_rev/cache/cache_helper.dart';
 import 'package:apis_rev/core/api/dio_consumer.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:apis_rev/cubit/user_cubit.dart';
 import 'package:apis_rev/screens/sign_in_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  CacheHelper().init();
   runApp(
     BlocProvider(
       create: (context) => UserCubit(DioConsumer(dio: Dio())),
