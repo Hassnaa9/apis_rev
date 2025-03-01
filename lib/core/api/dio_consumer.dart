@@ -7,7 +7,7 @@ class DioConsumer extends ApiConsumer{
 
   DioConsumer({required this.dio});
   @override
-  Future delete(String url, Object data, Map<String, dynamic> queryParameters) async
+  Future delete(String url, Object? data, Map<String, dynamic>? queryParameters) async
     {
       try {
       final response = await dio.delete(url, data: data, queryParameters: queryParameters);
@@ -20,7 +20,7 @@ class DioConsumer extends ApiConsumer{
 
 
   @override
-  Future get(String url, Object data, Map<String, dynamic> queryParameters) async{
+  Future get(String url, Object? data, Map<String, dynamic>? queryParameters) async{
      try {
       final response = await dio.get(url, queryParameters: queryParameters);
       return response.data;
@@ -31,7 +31,7 @@ class DioConsumer extends ApiConsumer{
   }
 
   @override
-  Future post(String url, Object data, Map<String, dynamic> queryParameters) {
+  Future post(String url, Object? data, Map<String, dynamic>? queryParameters) {
     try {
       final response = dio.post(url, data: data, queryParameters: queryParameters);
       return response;
@@ -42,7 +42,7 @@ class DioConsumer extends ApiConsumer{
   }
 
   @override
-  Future put(String url, Object data, Map<String, dynamic> queryParameters) {
+  Future put(String url, Object? data, Map<String, dynamic>? queryParameters) {
    try {
       final response = dio.put(url, data: data, queryParameters: queryParameters);
       return response;
